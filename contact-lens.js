@@ -100,28 +100,40 @@ let enhance = async () => {
         const res = entry.resource;
         if (!res) continue;
 
-        if (res.generalPractitioner && Array.isArray(res.generalPractitioner)) {
+
+
+        // 2. Look for generalPractitioner reference
+        if (Array.isArray(res.generalPractitioner)) {
             for (const gpRef of res.generalPractitioner) {
-                const gpId = gpRef.reference?.split("/")[1]; // e.g., "Practitioner/123" -> "123"
+                const gpId = gpRef.reference?.split("/")[1]; // Get ID from "Practitioner/123"
                 if (!gpId) continue;
 
-                // Find the referenced resource in the bundle
                 const gpResource = ipsData.entry.find(e => e.resource?.id === gpId)?.resource;
                 if (!gpResource) continue;
 
-                // 3. Print communication info if available
-                if (gpResource.resourceType === "Practitioner" || gpResource.resourceType === "Organization") {
+                if (
+                    gpResource.resourceType === "Practitioner" ||
+                    gpResource.resourceType === "Organization"
+                ) {
                     const telecoms = gpResource.telecom;
                     if (Array.isArray(telecoms)) {
-                        console.log(`📞 Contact info for ${gpResource.resourceType} (${gpId}):`);
-                        for (const telecom of telecoms) {
-                            console.log(`- ${telecom.system}: ${telecom.value}`);
+                        const filtered = telecoms.filter(t =>
+                            ["phone", "email"].includes(t.system)
+                        );
+                        if (filtered.length > 0) {
+                            console.log(`📞 Contact info for ${gpResource.resourceType} (${gpId}):`);
+                            for (const telecom of filtered) {
+                                console.log(`- ${telecom.system}: ${telecom.value}`);
+                            }
+                        } else {
+                            console.log(`ℹ️ ${gpResource.resourceType} (${gpId}) has no phone or email.`);
                         }
                     } else {
                         console.log(`ℹ️ ${gpResource.resourceType} (${gpId}) has no telecom information.`);
                     }
                 }
             }
+
         }
     }
     // Check bundle.identifier.value
