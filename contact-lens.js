@@ -43,21 +43,7 @@ const insertQuestionnaireLink = (listOfCategories, linkHTML, document, response)
     });
 
     //TODO check language like (diabetes lens)
-    // No matching category tags → inject banner at top
-    if (!foundCategory) {
-        const bannerDiv = document.createElement("div");
-        bannerDiv.innerHTML = `
-        <div class="alert-banner questionnaire-lens" style="background-color:#ffdddd;padding:1em;border:1px solid #ff8888;margin-bottom:1em;">
-          ⚠️ This medication may cause high-risk side effects.
-          <a href="${linkHTML}" target="_blank" style="margin-left: 1em;">Fill out safety questionnaire</a>
-        </div>
-      `;
 
-        const body = document.querySelector("body");
-        if (body) {
-            body.insertBefore(bannerDiv, body.firstChild);
-        }
-    }
 
     // Clean head (same as your original logic)
     if (document.getElementsByTagName("head").length > 0) {
@@ -87,20 +73,12 @@ let enhance = async () => {
     if (!epiData || !epiData.entry || epiData.entry.length === 0) {
         throw new Error("ePI is empty or invalid.");
     }
-    let listOfCategoriesToSearch = ["grav-3"]; //what to look in extensions -made up code because there is none
+    let listOfCategoriesToSearch = ["grav-4"]; //what to look in extensions -made up code because there is none
 
-    // Match lists
-    const BUNDLE_IDENTIFIER_LIST = ["epibundle-123", "epibundle-abc"];
-    const PRODUCT_IDENTIFIER_LIST = ["CIT-204447", "RIS-197361"];
-
-
-    let matchFound = false;
 
     for (const entry of ipsData.entry) {
         const res = entry.resource;
         if (!res) continue;
-
-
 
         // 2. Look for generalPractitioner reference
         if (Array.isArray(res.generalPractitioner)) {
@@ -136,28 +114,7 @@ let enhance = async () => {
 
         }
     }
-    // Check bundle.identifier.value
-    if (
-        epiData.identifier &&
-        BUNDLE_IDENTIFIER_LIST.includes(epiData.identifier.value)
-    ) {
-        console.log("🔗 Matched ePI Bundle.identifier:", epiData.identifier.value);
-        matchFound = true;
-    }
 
-    // Check MedicinalProductDefinition.identifier.value
-    epiData.entry.forEach((entry) => {
-        const res = entry.resource;
-        if (res?.resourceType === "MedicinalProductDefinition") {
-            const ids = res.identifier || [];
-            ids.forEach((id) => {
-                if (PRODUCT_IDENTIFIER_LIST.includes(id.value)) {
-                    console.log("💊 Matched MedicinalProductDefinition.identifier:", id.value);
-                    matchFound = true;
-                }
-            });
-        }
-    });
 
     // ePI traslation from terminology codes to their human redable translations in the sections
     // in this case, if is does not find a place, adds it to the top of the ePI
@@ -190,11 +147,6 @@ let enhance = async () => {
     });
     if (compositions == 0) {
         throw new Error('Bad ePI: no category "Composition" found');
-    }
-
-    if (!matchFound) {
-        console.log("ePI is not for a high-risk side effect medication");
-        return htmlData;
     }
 
     else {
