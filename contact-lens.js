@@ -5,15 +5,11 @@ let epiData = epi;
 let ipsData = ips;
 
 let getSpecification = () => {
-    return "2.0.3-questionnaire-banner";
+    return "2.0.3-contact-banner";
 };
 //document, htmlData, bannerHTML
 //
-const insertQuestionnaireLink = (listOfCategories, linkHTML, document, response) => {
-    let shouldAppend = false; //for future usage
-    let foundCategory = false;
-    console.log(listOfCategories)
-    console.log(listOfCategories.length)
+const insertContactLinks = (listOfCategories, contacts, document, response) => {
     listOfCategories.forEach((className) => {
         if (
             response.includes(`class="${className}`) ||
@@ -22,25 +18,30 @@ const insertQuestionnaireLink = (listOfCategories, linkHTML, document, response)
             const elements = document.getElementsByClassName(className);
             for (let i = 0; i < elements.length; i++) {
                 const el = elements[i];
-                const link = document.createElement("a");
-                link.setAttribute("href", linkHTML);
-                link.setAttribute("target", "_blank");
-                link.setAttribute("class", "questionnaire-lens");
 
-                if (shouldAppend) {
-                    // Append the link as a new element inside the existing element
-                    link.innerHTML = "📝 Fill out safety questionnaire";
-                    el.appendChild(link);
-                } else {
-                    // Wrap the existing contents of the element in the link
-                    link.innerHTML = el.innerHTML;
-                    el.innerHTML = "";
-                    el.appendChild(link);
-                }
+                contacts.forEach(contact => {
+                    let href = "";
+                    if (contact.type === "email") {
+                        href = `mailto:${contact.value}`;
+                    } else if (contact.type === "phone") {
+                        href = `tel:${contact.value}`;
+                    }
+
+                    if (href) {
+                        // Create <a> and wrap existing content
+                        const a = document.createElement("a");
+                        a.setAttribute("href", href);
+                        a.setAttribute("target", "_blank");
+                        a.classList.add("contact-lens");
+
+                        a.innerHTML = el.innerHTML;  // move original content into <a>
+                        el.innerHTML = "";           // clear original content
+                        el.appendChild(a);           // insert the <a> inside the original element
+                    }
+                });
             }
-            foundCategory = true;
         }
-    });
+    })
 
     //TODO check language like (diabetes lens)
 
@@ -73,17 +74,19 @@ let enhance = async () => {
     if (!epiData || !epiData.entry || epiData.entry.length === 0) {
         throw new Error("ePI is empty or invalid.");
     }
-    let listOfCategoriesToSearch = ["grav-4"]; //what to look in extensions -made up code because there is none
 
+
+    let arrayOfClasses = [{ "code": "grav-4", "system": "https://www.gravitatehealth.eu/sid/doc" }]      //what to look in extensions -made up code because there is none
+
+    const contacts = []; // This will store the collected contact info
 
     for (const entry of ipsData.entry) {
         const res = entry.resource;
-        if (!res) continue;
+        if (!res || res.resourceType !== "Patient") continue;
 
-        // 2. Look for generalPractitioner reference
         if (Array.isArray(res.generalPractitioner)) {
             for (const gpRef of res.generalPractitioner) {
-                const gpId = gpRef.reference?.split("/")[1]; // Get ID from "Practitioner/123"
+                const gpId = gpRef.reference?.split("/")[1];
                 if (!gpId) continue;
 
                 const gpResource = ipsData.entry.find(e => e.resource?.id === gpId)?.resource;
@@ -98,28 +101,28 @@ let enhance = async () => {
                         const filtered = telecoms.filter(t =>
                             ["phone", "email"].includes(t.system)
                         );
-                        if (filtered.length > 0) {
-                            console.log(`📞 Contact info for ${gpResource.resourceType} (${gpId}):`);
-                            for (const telecom of filtered) {
-                                console.log(`- ${telecom.system}: ${telecom.value}`);
-                            }
-                        } else {
-                            console.log(`ℹ️ ${gpResource.resourceType} (${gpId}) has no phone or email.`);
+                        for (const telecom of filtered) {
+                            contacts.push({
+                                type: telecom.system,             // 'phone' or 'email'
+                                value: telecom.value,             // e.g. '+123456789'
+                                resourceType: gpResource.resourceType, // 'Practitioner' or 'Organization'
+                                id: gpResource.id
+                            });
                         }
-                    } else {
-                        console.log(`ℹ️ ${gpResource.resourceType} (${gpId}) has no telecom information.`);
                     }
                 }
             }
-
         }
     }
 
+    // Example usage:
+    console.log("Collected contacts:", contacts);
+
 
     // ePI traslation from terminology codes to their human redable translations in the sections
-    // in this case, if is does not find a place, adds it to the top of the ePI
     let compositions = 0;
     let categories = [];
+
     epi.entry.forEach((entry) => {
         if (entry.resource.resourceType == "Composition") {
             compositions++;
@@ -132,10 +135,11 @@ let enhance = async () => {
                     if (element.extension[1].valueCodeableReference.concept != undefined) {
                         element.extension[1].valueCodeableReference.concept.coding.forEach(
                             (coding) => {
-                                console.log("Extension: " + element.extension[0].valueString + ":" + coding.code)
+                                console.log("Extension: " + element.extension[0].valueString + ":" + coding.code + " - " + coding.system)
                                 // Check if the code is in the list of categories to search
-                                if (listOfCategoriesToSearch.includes(coding.code)) {
+                                    if (arrayOfClasses.some(item => item.code === coding.code && item.system === coding.system)) {
                                     // Check if the category is already in the list of categories
+                                    console.log("Found", element.extension[0].valueString)
                                     categories.push(element.extension[0].valueString);
                                 }
                             }
@@ -145,6 +149,8 @@ let enhance = async () => {
             });
         }
     });
+
+
     if (compositions == 0) {
         throw new Error('Bad ePI: no category "Composition" found');
     }
@@ -160,11 +166,11 @@ let enhance = async () => {
             let { JSDOM } = jsdom;
             let dom = new JSDOM(htmlData);
             document = dom.window.document;
-            return insertQuestionnaireLink(categories, QUESTIONNAIRE_URL, document, response);
+            return insertContactLinks(categories, contacts, document, response);
             //listOfCategories, enhanceTag, document, response
         } else {
             document = window.document;
-            return insertQuestionnaireLink(categories, QUESTIONNAIRE_URL, document, response);
+            return insertContactLinks(categories, contacts, document, response);
         }
     };
 };

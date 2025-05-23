@@ -41,7 +41,7 @@ beforeAll(() => {
 
 describe("Questionnaire adding Annotation Script (non-invasive)", () => {
   test("should return version string", () => {
-    expect(annotation.getSpecification()).toBe("2.0.3-questionnaire-banner");
+    expect(annotation.getSpecification()).toBe("2.0.3-contact-banner");
   });
 
   test("should return enhanced HTML containing questionaire link", async () => {
@@ -59,6 +59,6 @@ describe("Questionnaire adding Annotation Script (non-invasive)", () => {
 
     console.log(`✅ Enhanced HTML saved to: ${outputPath}`);
 
-    expect(result).toContain("<a href=\"https://example.org/questionnaire/high-risk");
+    expect(result).toContain("example@example.org");
   });
 });

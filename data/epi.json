@@ -83,7 +83,7 @@
               "extension": [
                 {
                   "url": "elementClass",
-                  "valueString": "questionnaire-link-place"
+                  "valueString": "contact-link-place"
                 },
                 {
                   "url": "concept",
@@ -91,9 +91,9 @@
                     "concept": {
                       "coding": [
                         {
-                          "code": "grav-3",
-                          "system": "http://snomed.info/sct",
-                          "display": "Pregnancy"
+                          "code": "grav-4",
+                          "system": "https://www.gravitatehealth.eu/sid/doc",
+                          "display": "Contact place"
                         },
                         {
                           "code": "W78",
@@ -191,7 +191,7 @@
                   },
                   "text": {
                     "status": "additional",
-                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><strong>Leaflet: Information for the user</strong></p><p>&#160;</p><p><strong>Calcium/Vitamin D</strong><strong>3</strong> <strong>ROVI 1000 mg / 880 IU effervescent tablets</strong></p><p>&#160;</p><p>Calcium carbonate/cholecalciferol (Vitamin D3)</p><p><strong>&#160;</strong></p><p><strong>Read this leaflet carefully before you start taking this medicine, as it contains important information for you.</strong></p><p>-Keep this leaflet. You may need to read it again.</p><p>-If you have any questions, ask your doctor or pharmacist.</p><p>-This medicine has been prescribed for you only. Do not give it to others, even if they have the same symptoms as you, as it may harm them.</p><p>-If you experience any side effects, talk to your doctor or pharmacist, even if they are not listed in this leaflet. See section 4.</p></div>"
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><strong>Leaflet: Information for the user</strong></p><p>&#160;</p><p><strong>Calcium/Vitamin D</strong><strong>3</strong> <strong>ROVI 1000 mg / 880 IU effervescent tablets</strong></p><p>&#160;</p><p>Calcium carbonate/cholecalciferol (Vitamin D3)</p><p><strong>&#160;</strong></p><p><strong>Read this leaflet carefully before you start taking this medicine, as it contains important information for you.</strong></p><p>-Keep this leaflet. You may need to read it again.</p><p class=\"contact-link-place\">-If you have any questions, ask your doctor or pharmacist.</p><p>-This medicine has been prescribed for you only. Do not give it to others, even if they have the same symptoms as you, as it may harm them.</p><p>-If you experience any side effects, talk to your doctor or pharmacist, even if they are not listed in this leaflet. See section 4.</p></div>"
                   }
                 },
                 {
