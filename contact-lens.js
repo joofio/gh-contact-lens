@@ -43,8 +43,6 @@ const insertContactLinks = (listOfCategories, contacts, document, response) => {
         }
     })
 
-    //TODO check language like (diabetes lens)
-
 
     // Clean head (same as your original logic)
     if (document.getElementsByTagName("head").length > 0) {
