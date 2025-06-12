@@ -1,0 +1,65 @@
+@startuml
+start
+:Check if `ipsData` is missing or empty;
+if (Is it invalid?) then (yes)
+  stop
+else (no)
+endif
+
+:Check if `epiData` is missing or empty;
+if (Is it invalid?) then (yes)
+  stop
+else (no)
+endif
+
+:Initialize `contacts` array;
+:Iterate over `ipsData.entry`;
+if (entry is a Patient?) then (yes)
+  :Iterate over generalPractitioner refs;
+  :Find corresponding Practitioner or Organization;
+  :Extract 'phone' or 'email' telecoms;
+  :Push each contact into `contacts`;
+endif
+
+:Initialize `categories` array;
+:Iterate over `epi.entry`;
+if (entry is a Composition?) then (yes)
+  :Iterate over `resource.extension`;
+  if (extension[1].url == "concept") then (yes)
+    if (concept.coding exists?) then (yes)
+      :For each coding, check if code & system match;
+      if (Matched?) then (yes)
+        :Push category label to `categories`;
+      endif
+    endif
+  endif
+endif
+
+if (No Compositions found?) then (yes)
+  stop
+else (no)
+endif
+
+:Create document from `htmlData`;
+if (Node.js context?) then (yes)
+  :Use jsdom to parse HTML;
+else (Browser context)
+  :Use window.document;
+endif
+
+:Call insertContactLinks(categories, contacts, document, response);
+note right
+  - For each category class,
+  - Wrap matching elements in <a> tags
+  - Use mailto: or tel: links
+  - Remove <head>, extract new HTML
+end note
+
+if (resulting response is empty?) then (yes)
+  stop
+else (no)
+  :Return enhanced HTML;
+endif
+
+stop
+@enduml
