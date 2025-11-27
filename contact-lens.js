@@ -73,7 +73,7 @@ let enhance = async () => {
         throw new Error("ePI is empty or invalid.");
     }
 
-
+    //TODO change this or the one in qt-prolongation (sid/doc vs codes)
     let arrayOfClasses = [{ "code": "grav-4", "system": "https://www.gravitatehealth.eu/sid/doc" }]      //what to look in extensions -made up code because there is none
 
     const contacts = []; // This will store the collected contact info
@@ -135,7 +135,7 @@ let enhance = async () => {
                             (coding) => {
                                 console.log("Extension: " + element.extension[0].valueString + ":" + coding.code + " - " + coding.system)
                                 // Check if the code is in the list of categories to search
-                                    if (arrayOfClasses.some(item => item.code === coding.code && item.system === coding.system)) {
+                                if (arrayOfClasses.some(item => item.code === coding.code && item.system === coding.system)) {
                                     // Check if the category is already in the list of categories
                                     console.log("Found", element.extension[0].valueString)
                                     categories.push(element.extension[0].valueString);
