@@ -130,7 +130,7 @@
       ]
     }
   ],
-  "description": "Lens that highlight diabetes related information",
+  "description": "Lens that adds clickable contact links (email/phone) from the patient's healthcare provider information",
   "_description": {
     "extension": [
       {
@@ -142,7 +142,7 @@
           },
           {
             "url": "content",
-            "valueString": "Lente que resalta información relacionada con la diabetes"
+            "valueString": "Lente que añade enlaces de contacto clicables (email/teléfono) de la información del proveedor de salud del paciente"
           }
         ]
       },
@@ -155,7 +155,7 @@
           },
           {
             "url": "content",
-            "valueString": "Lente que destaca informações relacionadas com a diabetes"
+            "valueString": "Lente que adiciona links de contacto clicáveis (email/telefone) da informação do prestador de cuidados de saúde do paciente"
           }
         ]
       },
@@ -168,7 +168,7 @@
           },
           {
             "url": "content",
-            "valueString": "Linse der fremhæver diabetesrelaterede oplysninger"
+            "valueString": "Linse der tilføjer klikbare kontaktlinks (email/telefon) fra patientens sundhedsudbyder information"
           }
         ]
       }
@@ -184,7 +184,7 @@
       ]
     }
   ],
-  "purpose": "Highlight diabetes related information in a preprocessed ePI.",
+  "purpose": "Add clickable contact links (mailto/tel) to contact sections in a preprocessed ePI using the patient's general practitioner information.",
   "_purpose": {
     "extension": [
       {
@@ -196,7 +196,7 @@
           },
           {
             "url": "content",
-            "valueString": "Resaltar información relacionada con la diabetes en una ePI preprocesada."
+            "valueString": "Añadir enlaces de contacto clicables (mailto/tel) a las secciones de contacto en una ePI preprocesada usando la información del médico de cabecera del paciente."
           }
         ]
       },
@@ -209,7 +209,7 @@
           },
           {
             "url": "content",
-            "valueString": "Destacar informações relacionadas com a diabetes em uma ePI pré-processada."
+            "valueString": "Adicionar links de contacto clicáveis (mailto/tel) às secções de contacto numa ePI pré-processada usando a informação do médico de família do paciente."
           }
         ]
       },
@@ -222,7 +222,7 @@
           },
           {
             "url": "content",
-            "valueString": "Fremhæv diabetesrelaterede oplysninger i en forbehandlet ePI."
+            "valueString": "Tilføj klikbare kontaktlinks (mailto/tel) til kontaktsektioner i en forbehandlet ePI ved brug af patientens praktiserende læge information."
           }
         ]
       }
@@ -283,7 +283,7 @@
   "content": [
     {
       "contentType": "application/javascript",
-      "title": "Lens for diabetes",
+      "title": "Lens for contact information",
       "data": "bGV0IHB2RGF0YSA9IHB2OwpsZXQgaHRtbERhdGEgPSBodG1sOwoKbGV0IGVwaURhdGEgPSBlcGk7CmxldCBpcHNEYXRhID0gaXBzOwoKbGV0IGdldFNwZWNpZmljYXRpb24gPSAoKSA9PiB7CiAgICByZXR1cm4gIjIuMC4zLWNvbnRhY3QtYmFubmVyIjsKfTsKLy9kb2N1bWVudCwgaHRtbERhdGEsIGJhbm5lckhUTUwKLy8KY29uc3QgaW5zZXJ0Q29udGFjdExpbmtzID0gKGxpc3RPZkNhdGVnb3JpZXMsIGNvbnRhY3RzLCBkb2N1bWVudCwgcmVzcG9uc2UpID0+IHsKICAgIGxpc3RPZkNhdGVnb3JpZXMuZm9yRWFjaCgoY2xhc3NOYW1lKSA9PiB7CiAgICAgICAgaWYgKAogICAgICAgICAgICByZXNwb25zZS5pbmNsdWRlcyhgY2xhc3M9IiR7Y2xhc3NOYW1lfWApIHx8CiAgICAgICAgICAgIHJlc3BvbnNlLmluY2x1ZGVzKGBjbGFzcz0nJHtjbGFzc05hbWV9YCkKICAgICAgICApIHsKICAgICAgICAgICAgY29uc3QgZWxlbWVudHMgPSBkb2N1bWVudC5nZXRFbGVtZW50c0J5Q2xhc3NOYW1lKGNsYXNzTmFtZSk7CiAgICAgICAgICAgIGZvciAobGV0IGkgPSAwOyBpIDwgZWxlbWVudHMubGVuZ3RoOyBpKyspIHsKICAgICAgICAgICAgICAgIGNvbnN0IGVsID0gZWxlbWVudHNbaV07CgogICAgICAgICAgICAgICAgY29udGFjdHMuZm9yRWFjaChjb250YWN0ID0+IHsKICAgICAgICAgICAgICAgICAgICBsZXQgaHJlZiA9ICIiOwogICAgICAgICAgICAgICAgICAgIGlmIChjb250YWN0LnR5cGUgPT09ICJlbWFpbCIpIHsKICAgICAgICAgICAgICAgICAgICAgICAgaHJlZiA9IGBtYWlsdG86JHtjb250YWN0LnZhbHVlfWA7CiAgICAgICAgICAgICAgICAgICAgfSBlbHNlIGlmIChjb250YWN0LnR5cGUgPT09ICJwaG9uZSIpIHsKICAgICAgICAgICAgICAgICAgICAgICAgaHJlZiA9IGB0ZWw6JHtjb250YWN0LnZhbHVlfWA7CiAgICAgICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgICAgICBpZiAoaHJlZikgewogICAgICAgICAgICAgICAgICAgICAgICAvLyBDcmVhdGUgPGE+IGFuZCB3cmFwIGV4aXN0aW5nIGNvbnRlbnQKICAgICAgICAgICAgICAgICAgICAgICAgY29uc3QgYSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoImEiKTsKICAgICAgICAgICAgICAgICAgICAgICAgYS5zZXRBdHRyaWJ1dGUoImhyZWYiLCBocmVmKTsKICAgICAgICAgICAgICAgICAgICAgICAgYS5zZXRBdHRyaWJ1dGUoInRhcmdldCIsICJfYmxhbmsiKTsKICAgICAgICAgICAgICAgICAgICAgICAgYS5jbGFzc0xpc3QuYWRkKCJjb250YWN0LWxlbnMiKTsKCiAgICAgICAgICAgICAgICAgICAgICAgIGEuaW5uZXJIVE1MID0gZWwuaW5uZXJIVE1MOyAgLy8gbW92ZSBvcmlnaW5hbCBjb250ZW50IGludG8gPGE+CiAgICAgICAgICAgICAgICAgICAgICAgIGVsLmlubmVySFRNTCA9ICIiOyAgICAgICAgICAgLy8gY2xlYXIgb3JpZ2luYWwgY29udGVudAogICAgICAgICAgICAgICAgICAgICAgICBlbC5hcHBlbmRDaGlsZChhKTsgICAgICAgICAgIC8vIGluc2VydCB0aGUgPGE+IGluc2lkZSB0aGUgb3JpZ2luYWwgZWxlbWVudAogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIH0pOwogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfSkKCgogICAgLy8gQ2xlYW4gaGVhZCAoc2FtZSBhcyB5b3VyIG9yaWdpbmFsIGxvZ2ljKQogICAgaWYgKGRvY3VtZW50LmdldEVsZW1lbnRzQnlUYWdOYW1lKCJoZWFkIikubGVuZ3RoID4gMCkgewogICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRzQnlUYWdOYW1lKCJoZWFkIilbMF0ucmVtb3ZlKCk7CiAgICB9CgogICAgLy8gRXh0cmFjdCBIVE1MIHJlc3VsdAogICAgaWYgKGRvY3VtZW50LmdldEVsZW1lbnRzQnlUYWdOYW1lKCJib2R5IikubGVuZ3RoID4gMCkgewogICAgICAgIHJlc3BvbnNlID0gZG9jdW1lbnQuZ2V0RWxlbWVudHNCeVRhZ05hbWUoImJvZHkiKVswXS5pbm5lckhUTUw7CiAgICAgICAgY29uc29sZS5sb2coIlJlc3BvbnNlOiAiICsgcmVzcG9uc2UpOwogICAgfSBlbHNlIHsKICAgICAgICBjb25zb2xlLmxvZygiUmVzcG9uc2U6ICIgKyBkb2N1bWVudC5kb2N1bWVudEVsZW1lbnQuaW5uZXJIVE1MKTsKICAgICAgICByZXNwb25zZSA9IGRvY3VtZW50LmRvY3VtZW50RWxlbWVudC5pbm5lckhUTUw7CiAgICB9CgogICAgaWYgKCFyZXNwb25zZSB8fCByZXNwb25zZS50cmltKCkgPT09ICIiKSB7CiAgICAgICAgdGhyb3cgbmV3IEVycm9yKCJBbm5vdGF0aW9uIHByb2Nlc3MgZmFpbGVkOiBlbXB0eSBvciBudWxsIHJlc3BvbnNlIik7CiAgICB9CgogICAgcmV0dXJuIHJlc3BvbnNlOwp9OwoKbGV0IGVuaGFuY2UgPSBhc3luYyAoKSA9PiB7CiAgICBpZiAoIWlwc0RhdGEgfHwgIWlwc0RhdGEuZW50cnkgfHwgaXBzRGF0YS5lbnRyeS5sZW5ndGggPT09IDApIHsKICAgICAgICB0aHJvdyBuZXcgRXJyb3IoIklQUyBpcyBlbXB0eSBvciBpbnZhbGlkLiIpOwogICAgfQogICAgaWYgKCFlcGlEYXRhIHx8ICFlcGlEYXRhLmVudHJ5IHx8IGVwaURhdGEuZW50cnkubGVuZ3RoID09PSAwKSB7CiAgICAgICAgdGhyb3cgbmV3IEVycm9yKCJlUEkgaXMgZW1wdHkgb3IgaW52YWxpZC4iKTsKICAgIH0KCiAgICAvL1RPRE8gY2hhbmdlIHRoaXMgb3IgdGhlIG9uZSBpbiBxdC1wcm9sb25nYXRpb24gKHNpZC9kb2MgdnMgY29kZXMpCiAgICBsZXQgYXJyYXlPZkNsYXNzZXMgPSBbeyAiY29kZSI6ICJncmF2LTQiLCAic3lzdGVtIjogImh0dHBzOi8vd3d3LmdyYXZpdGF0ZWhlYWx0aC5ldS9zaWQvZG9jIiB9XSAgICAgIC8vd2hhdCB0byBsb29rIGluIGV4dGVuc2lvbnMgLW1hZGUgdXAgY29kZSBiZWNhdXNlIHRoZXJlIGlzIG5vbmUKCiAgICBjb25zdCBjb250YWN0cyA9IFtdOyAvLyBUaGlzIHdpbGwgc3RvcmUgdGhlIGNvbGxlY3RlZCBjb250YWN0IGluZm8KCiAgICBmb3IgKGNvbnN0IGVudHJ5IG9mIGlwc0RhdGEuZW50cnkpIHsKICAgICAgICBjb25zdCByZXMgPSBlbnRyeS5yZXNvdXJjZTsKICAgICAgICBpZiAoIXJlcyB8fCByZXMucmVzb3VyY2VUeXBlICE9PSAiUGF0aWVudCIpIGNvbnRpbnVlOwoKICAgICAgICBpZiAoQXJyYXkuaXNBcnJheShyZXMuZ2VuZXJhbFByYWN0aXRpb25lcikpIHsKICAgICAgICAgICAgZm9yIChjb25zdCBncFJlZiBvZiByZXMuZ2VuZXJhbFByYWN0aXRpb25lcikgewogICAgICAgICAgICAgICAgY29uc3QgZ3BJZCA9IGdwUmVmLnJlZmVyZW5jZT8uc3BsaXQoIi8iKVsxXTsKICAgICAgICAgICAgICAgIGlmICghZ3BJZCkgY29udGludWU7CgogICAgICAgICAgICAgICAgY29uc3QgZ3BSZXNvdXJjZSA9IGlwc0RhdGEuZW50cnkuZmluZChlID0+IGUucmVzb3VyY2U/LmlkID09PSBncElkKT8ucmVzb3VyY2U7CiAgICAgICAgICAgICAgICBpZiAoIWdwUmVzb3VyY2UpIGNvbnRpbnVlOwoKICAgICAgICAgICAgICAgIGlmICgKICAgICAgICAgICAgICAgICAgICBncFJlc291cmNlLnJlc291cmNlVHlwZSA9PT0gIlByYWN0aXRpb25lciIgfHwKICAgICAgICAgICAgICAgICAgICBncFJlc291cmNlLnJlc291cmNlVHlwZSA9PT0gIk9yZ2FuaXphdGlvbiIKICAgICAgICAgICAgICAgICkgewogICAgICAgICAgICAgICAgICAgIGNvbnN0IHRlbGVjb21zID0gZ3BSZXNvdXJjZS50ZWxlY29tOwogICAgICAgICAgICAgICAgICAgIGlmIChBcnJheS5pc0FycmF5KHRlbGVjb21zKSkgewogICAgICAgICAgICAgICAgICAgICAgICBjb25zdCBmaWx0ZXJlZCA9IHRlbGVjb21zLmZpbHRlcih0ID0+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBbInBob25lIiwgImVtYWlsIl0uaW5jbHVkZXModC5zeXN0ZW0pCiAgICAgICAgICAgICAgICAgICAgICAgICk7CiAgICAgICAgICAgICAgICAgICAgICAgIGZvciAoY29uc3QgdGVsZWNvbSBvZiBmaWx0ZXJlZCkgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgY29udGFjdHMucHVzaCh7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogdGVsZWNvbS5zeXN0ZW0sICAgICAgICAgICAgIC8vICdwaG9uZScgb3IgJ2VtYWlsJwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZhbHVlOiB0ZWxlY29tLnZhbHVlLCAgICAgICAgICAgICAvLyBlLmcuICcrMTIzNDU2Nzg5JwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlc291cmNlVHlwZTogZ3BSZXNvdXJjZS5yZXNvdXJjZVR5cGUsIC8vICdQcmFjdGl0aW9uZXInIG9yICdPcmdhbml6YXRpb24nCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWQ6IGdwUmVzb3VyY2UuaWQKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0pOwogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQoKICAgIC8vIEV4YW1wbGUgdXNhZ2U6CiAgICBjb25zb2xlLmxvZygiQ29sbGVjdGVkIGNvbnRhY3RzOiIsIGNvbnRhY3RzKTsKCgogICAgLy8gZVBJIHRyYXNsYXRpb24gZnJvbSB0ZXJtaW5vbG9neSBjb2RlcyB0byB0aGVpciBodW1hbiByZWRhYmxlIHRyYW5zbGF0aW9ucyBpbiB0aGUgc2VjdGlvbnMKICAgIGxldCBjb21wb3NpdGlvbnMgPSAwOwogICAgbGV0IGNhdGVnb3JpZXMgPSBbXTsKCiAgICBlcGkuZW50cnkuZm9yRWFjaCgoZW50cnkpID0+IHsKICAgICAgICBpZiAoZW50cnkucmVzb3VyY2UucmVzb3VyY2VUeXBlID09ICJDb21wb3NpdGlvbiIpIHsKICAgICAgICAgICAgY29tcG9zaXRpb25zKys7CiAgICAgICAgICAgIC8vSXRlcmF0ZWQgdGhyb3VnaCB0aGUgQ29uZGl0aW9uIGVsZW1lbnQgc2VhcmNoaW5nIGZvciBjb25kaXRpb25zCiAgICAgICAgICAgIGVudHJ5LnJlc291cmNlLmV4dGVuc2lvbi5mb3JFYWNoKChlbGVtZW50KSA9PiB7CgogICAgICAgICAgICAgICAgLy8gQ2hlY2sgaWYgdGhlIHBvc2l0aW9uIG9mIHRoZSBleHRlbnNpb25bMV0gaXMgY29ycmVjdAogICAgICAgICAgICAgICAgaWYgKGVsZW1lbnQuZXh0ZW5zaW9uWzFdLnVybCA9PSAiY29uY2VwdCIpIHsKICAgICAgICAgICAgICAgICAgICAvLyBTZWFyY2ggdGhyb3VnaCB0aGUgZGlmZmVyZW50IHRlcm1pbm9sb2dpZXMgdGhhdCBtYXkgYmUgYXZhaWJsZSB0byBjaGVjayBpbiB0aGUgY29uZGl0aW9uCiAgICAgICAgICAgICAgICAgICAgaWYgKGVsZW1lbnQuZXh0ZW5zaW9uWzFdLnZhbHVlQ29kZWFibGVSZWZlcmVuY2UuY29uY2VwdCAhPSB1bmRlZmluZWQpIHsKICAgICAgICAgICAgICAgICAgICAgICAgZWxlbWVudC5leHRlbnNpb25bMV0udmFsdWVDb2RlYWJsZVJlZmVyZW5jZS5jb25jZXB0LmNvZGluZy5mb3JFYWNoKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgKGNvZGluZykgPT4gewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnNvbGUubG9nKCJFeHRlbnNpb246ICIgKyBlbGVtZW50LmV4dGVuc2lvblswXS52YWx1ZVN0cmluZyArICI6IiArIGNvZGluZy5jb2RlICsgIiAtICIgKyBjb2Rpbmcuc3lzdGVtKQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC8vIENoZWNrIGlmIHRoZSBjb2RlIGlzIGluIHRoZSBsaXN0IG9mIGNhdGVnb3JpZXMgdG8gc2VhcmNoCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWYgKGFycmF5T2ZDbGFzc2VzLnNvbWUoaXRlbSA9PiBpdGVtLmNvZGUgPT09IGNvZGluZy5jb2RlICYmIGl0ZW0uc3lzdGVtID09PSBjb2Rpbmcuc3lzdGVtKSkgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAvLyBDaGVjayBpZiB0aGUgY2F0ZWdvcnkgaXMgYWxyZWFkeSBpbiB0aGUgbGlzdCBvZiBjYXRlZ29yaWVzCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnNvbGUubG9nKCJGb3VuZCIsIGVsZW1lbnQuZXh0ZW5zaW9uWzBdLnZhbHVlU3RyaW5nKQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjYXRlZ29yaWVzLnB1c2goZWxlbWVudC5leHRlbnNpb25bMF0udmFsdWVTdHJpbmcpOwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgKTsKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0pOwogICAgICAgIH0KICAgIH0pOwoKCiAgICBpZiAoY29tcG9zaXRpb25zID09IDApIHsKICAgICAgICB0aHJvdyBuZXcgRXJyb3IoJ0JhZCBlUEk6IG5vIGNhdGVnb3J5ICJDb21wb3NpdGlvbiIgZm91bmQnKTsKICAgIH0KCiAgICBlbHNlIHsKCgogICAgICAgIGxldCByZXNwb25zZSA9IGh0bWxEYXRhOwogICAgICAgIGxldCBkb2N1bWVudDsKCiAgICAgICAgaWYgKHR5cGVvZiB3aW5kb3cgPT09ICJ1bmRlZmluZWQiKSB7CiAgICAgICAgICAgIGxldCBqc2RvbSA9IGF3YWl0IGltcG9ydCgianNkb20iKTsKICAgICAgICAgICAgbGV0IHsgSlNET00gfSA9IGpzZG9tOwogICAgICAgICAgICBsZXQgZG9tID0gbmV3IEpTRE9NKGh0bWxEYXRhKTsKICAgICAgICAgICAgZG9jdW1lbnQgPSBkb20ud2luZG93LmRvY3VtZW50OwogICAgICAgICAgICByZXR1cm4gaW5zZXJ0Q29udGFjdExpbmtzKGNhdGVnb3JpZXMsIGNvbnRhY3RzLCBkb2N1bWVudCwgcmVzcG9uc2UpOwogICAgICAgICAgICAvL2xpc3RPZkNhdGVnb3JpZXMsIGVuaGFuY2VUYWcsIGRvY3VtZW50LCByZXNwb25zZQogICAgICAgIH0gZWxzZSB7CiAgICAgICAgICAgIGRvY3VtZW50ID0gd2luZG93LmRvY3VtZW50OwogICAgICAgICAgICByZXR1cm4gaW5zZXJ0Q29udGFjdExpbmtzKGNhdGVnb3JpZXMsIGNvbnRhY3RzLCBkb2N1bWVudCwgcmVzcG9uc2UpOwogICAgICAgIH0KICAgIH07Cn07CgoKZnVuY3Rpb24gZ2V0UmVwb3J0KGxhbmcpIHsKICAgIGNvbnNvbGUubG9nKCJHZW5lcmF0aW5nIHJlcG9ydCBpbiBsYW5ndWFnZToiLCBsYW5nKTsKICAgIHJldHVybiB7IG1lc3NhZ2U6IGdldEV4cGxhbmF0aW9uKGxhbmcpLCBzdGF0dXM6ICIiIH07CgoKfQoKLy8gLS0tIEdldCB1c2VyLWZhY2luZyByZXBvcnQgc2VudGVuY2UgaW4gdGhlIHNlbGVjdGVkIGxhbmd1YWdlIC0tLQpmdW5jdGlvbiBnZXRFeHBsYW5hdGlvbihsYW5nKSB7CiAgICBjb25zb2xlLmxvZygiR2VuZXJhdGluZyBleHBsYW5hdGlvbiBpbiBsYW5ndWFnZToiLCBsYW5nKTsKICAgIHJldHVybiAiIjsKfQoKLy8gLS0tIEV4cG9ydGVkIEFQSSAtLS0KcmV0dXJuIHsKICAgIGVuaGFuY2U6IGVuaGFuY2UsCiAgICBnZXRTcGVjaWZpY2F0aW9uOiBnZXRTcGVjaWZpY2F0aW9uLAogICAgZXhwbGFuYXRpb246IChsYW5ndWFnZSkgPT4gZ2V0RXhwbGFuYXRpb24obGFuZ3VhZ2UgfHwgbGFuZyksCiAgICByZXBvcnQ6IChsYW5ndWFnZSkgPT4gZ2V0UmVwb3J0KGxhbmd1YWdlIHx8IGxhbmcpLAp9Owo=",
       "_title": {
         "extension": [
@@ -296,7 +296,7 @@
               },
               {
                 "url": "content",
-                "valueString": "Lente para la diabetes"
+                "valueString": "Lente para información de contacto"
               }
             ]
           },
@@ -309,7 +309,7 @@
               },
               {
                 "url": "content",
-                "valueString": "Lente para a diabetes"
+                "valueString": "Lente para informação de contacto"
               }
             ]
           },
@@ -322,7 +322,7 @@
               },
               {
                 "url": "content",
-                "valueString": "Linse til diabetes"
+                "valueString": "Linse til kontaktinformation"
               }
             ]
           }
