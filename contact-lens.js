@@ -3,6 +3,7 @@ let htmlData = html;
 
 let epiData = epi;
 let ipsData = ips;
+let lang = "";  // Default language, will be set by ePI
 
 let getSpecification = () => {
     return "2.0.3-contact-banner";
@@ -71,6 +72,27 @@ let enhance = async () => {
     }
     if (!epiData || !epiData.entry || epiData.entry.length === 0) {
         throw new Error("ePI is empty or invalid.");
+    }
+
+    // 1. Check Composition.language
+    epiData.entry?.forEach((entry) => {
+        const res = entry.resource;
+        if (res?.resourceType === "Composition" && res.language) {
+            lang = res.language;
+            console.log("Detected from Composition.language:", lang);
+        }
+    });
+
+    // 2. If not found, check Bundle.language
+    if (!lang && epiData.language) {
+        lang = epiData.language;
+        console.log("Detected from Bundle.language:", lang);
+    }
+
+    // 3. Fallback
+    if (!lang) {
+        console.warn("No language detected in Composition or Bundle.");
+        lang = "en";
     }
 
     //TODO change this or the one in qt-prolongation (sid/doc vs codes)
@@ -174,7 +196,7 @@ let enhance = async () => {
 };
 
 
-function getReport(lang) {
+function getReport(lang = "en") {
     console.log("Generating report in language:", lang);
     return { message: getExplanation(lang), status: "" };
 
@@ -182,7 +204,7 @@ function getReport(lang) {
 }
 
 // --- Get user-facing report sentence in the selected language ---
-function getExplanation(lang) {
+function getExplanation(lang = "en") {
     console.log("Generating explanation in language:", lang);
     return "";
 }
@@ -191,6 +213,6 @@ function getExplanation(lang) {
 return {
     enhance: enhance,
     getSpecification: getSpecification,
-    explanation: (language) => getExplanation(language || lang),
-    report: (language) => getReport(language || lang),
+    explanation: (language) => getExplanation(language || lang || "en"),
+    report: (language) => getReport(language || lang || "en"),
 };
